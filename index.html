@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- <link href="styles.css" rel="stylesheet" /> -->
+    <link rel="shortcut icon" href="img/favicon.png" />
     <title>Practice5</title>
     <style type="text/css">
       .body {
@@ -16,7 +16,7 @@
         text-align: center;
       }
 
-      .flecha {
+      .planeta {
         font-size: 2em;
         width: 300px;
         height: 300px;
@@ -39,28 +39,39 @@
     </style>
     <script type="text/javascript">
       window.onload = inicio;
+      let rotacion = 0;
 
       let resultado = 5 * 20;
       console.log(resultado);
 
       function inicio() {
         document.querySelector(".boton1").onclick = girar;
+        actualizar();
       }
 
       function girar() {
-        document.querySelector(".flecha").style.transform="rotate(45deg)";
+        // rotacion = rotacion + 20;
+        rotacion += 20;
+        if (rotacion >= 360) {
+          rotacion = 0;
+        }
+        document.querySelector(
+          ".planeta"
+        ).style.transform = `rotate(${rotacion}deg)`;
+        actualizar();
       }
-    
+
+      function actualizar() {
+        document.querySelector(".porcentaje").innerHTML = `${rotacion}°`;
+      }
     </script>
   </head>
   <body>
     <div class="boton1">
-      <div class="flecha">
+      <div class="planeta">
         <img src="img/saturn.png" alt="" />
       </div>
       <div class="porcentaje">0</div>
     </div>
-
-    <!-- <script src="index.js"></script> -->
   </body>
 </html>
